@@ -15,8 +15,11 @@ datasource db {
 }
 
 model Author {
-  id       String @id @default(uuid())
-  username String
+  id        String   @id @default(uuid())
+  username  String
+  password  String // Hash in prod!
+  createdAt DateTime
+  updatedAt DateTime
 }
 
 model Post {
