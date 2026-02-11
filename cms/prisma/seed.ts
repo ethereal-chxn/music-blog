@@ -1,6 +1,8 @@
 import { PrismaClient, Prisma } from "../app/generated/prisma/client";
+import { withAccelerate } from '@prisma/extension-accelerate'
+import 'dotenv/config'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({accelerateUrl: process.env.DATABASE_URL}).$extends(withAccelerate())
 
 const postData: Prisma.PostCreateInput[] = [
     {
